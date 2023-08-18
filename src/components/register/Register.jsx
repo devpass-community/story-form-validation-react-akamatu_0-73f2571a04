@@ -5,7 +5,7 @@ import "./styles.css";
 const initialState = {
   name: "",
   email: "",
-  password: ""
+  password: "",
 };
 
 const Register = () => {
@@ -18,14 +18,17 @@ const Register = () => {
     setState((prevState) => {
       return {
         ...prevState,
-        [name]: value
+        [name]: value,
       };
     });
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // TODO
+    const hasEmptyInput = !Object.values(state).includes("");
+    hasEmptyInput
+      ? setSuccessMsg("You have successfully registered.")
+      : setErrorMsg("All the fields are required.");
   };
 
   return (
